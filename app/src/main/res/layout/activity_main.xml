@@ -56,7 +56,7 @@
         app:layout_constraintTop_toTopOf="@+id/totext"
         app:layout_constraintVertical_bias="0.0"
         android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/editText" />
+        app:layout_constraintLeft_toLeftOf="@+id/enterValue" />
 
     <TextView
         android:id="@+id/valuetext"
@@ -73,20 +73,22 @@
         app:layout_constraintTop_toBottomOf="@+id/totext" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/enterValue"
         android:layout_width="203dp"
         android:layout_height="43dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
         android:backgroundTint="@color/colorAccent"
         android:elevation="1dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/enter_a_value"
-        app:layout_constraintTop_toTopOf="@+id/valuetext"
-        android:layout_marginTop="0dp"
+        android:hint="@string/enter_a_value"
+        android:imeOptions="actionDone"
+        android:inputType = "numberDecimal"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/valuetext"
-        android:layout_marginBottom="0dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/valuetext" />
 
     <Button
         android:id="@+id/convertbutton"
@@ -100,5 +102,26 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="32dp"
         app:layout_constraintTop_toBottomOf="@+id/valuetext" />
+
+    <TextView
+        android:id="@+id/outputResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@android:color/transparent"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Results"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/convertbutton" />
 
 </android.support.constraint.ConstraintLayout>
