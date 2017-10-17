@@ -84,7 +84,7 @@
         android:ems="10"
         android:hint="@string/enter_a_value"
         android:imeOptions="actionDone"
-        android:inputType = "numberDecimal"
+        android:inputType = "phone"
         android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/valuetext"
         app:layout_constraintRight_toRightOf="parent"

@@ -1,6 +1,7 @@
 package com.example.t00597013.unitconverter;
 
 import android.content.Context;
+import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                         InputMethodManager.HIDE_NOT_ALWAYS);
 
+                TextView results = (TextView) findViewById(R.id.outputResults);
+
                 if (fromText.equals(toText)) {
                     Toast.makeText(getBaseContext(), "From and To are the same", Toast.LENGTH_SHORT).show();
                 }
@@ -41,22 +44,20 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (toText.equals("Celsius")) {
                     Toast.makeText(getBaseContext(), "Converting to Celsius", Toast.LENGTH_SHORT).show();
+                    Double conversion = (Double.parseDouble(value) - 32) * 5 / 9;
+                    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+                    results.setText(decimalFormat.format(conversion));
                 }
                 else if (toText.equals("Fahrenheit")) {
                     Toast.makeText(getBaseContext(), "Converting to Fahrenheit", Toast.LENGTH_SHORT).show();
+                    Double conversion = (Double.parseDouble(value) * 9 / 5) + 32;
+                    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+                    results.setText(decimalFormat.format(conversion));
                 }
-                TextView e = (TextView) findViewById(R.id.outputResults);
-                e.setText("blah");
-                //Toast.makeText(getBaseContext(), toText, Toast.LENGTH_SHORT).show();
+                else {
+                    Toast.makeText(getBaseContext(), "Undefined Error", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
-
     }
-
-
-
-
-
-
 }
