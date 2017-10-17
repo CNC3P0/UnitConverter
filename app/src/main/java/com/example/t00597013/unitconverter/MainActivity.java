@@ -42,20 +42,30 @@ public class MainActivity extends AppCompatActivity {
                 else if (value.matches("")) {
                     Toast.makeText(getBaseContext(), "Please enter a value", Toast.LENGTH_SHORT).show();
                 }
-                else if (toText.equals("Celsius")) {
-                    Toast.makeText(getBaseContext(), "Converting to Celsius", Toast.LENGTH_SHORT).show();
-                    Double conversion = (Double.parseDouble(value) - 32) * 5 / 9;
-                    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-                    results.setText(decimalFormat.format(conversion));
+                else try {
+                    //check if value input is properly formatted as a number
+                    Double.parseDouble(value);
+                    if (toText.equals("Celsius")) {
+                        Toast.makeText(getBaseContext(), "Converting to Celsius", Toast.LENGTH_SHORT).show();
+                        Double conversion = (Double.parseDouble(value) - 32) * 5 / 9;
+                        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+                        results.setText(decimalFormat.format(conversion) + " ℃");
+                    }
+                    else if (toText.equals("Fahrenheit")) {
+                        Toast.makeText(getBaseContext(), "Converting to Fahrenheit", Toast.LENGTH_SHORT).show();
+                        Double conversion = (Double.parseDouble(value) * 9 / 5) + 32;
+                        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+                        results.setText(decimalFormat.format(conversion) + " ℉");
+                    }
+                    else {
+                        Toast.makeText(getBaseContext(), "An unknown ERROR has occurred", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                else if (toText.equals("Fahrenheit")) {
-                    Toast.makeText(getBaseContext(), "Converting to Fahrenheit", Toast.LENGTH_SHORT).show();
-                    Double conversion = (Double.parseDouble(value) * 9 / 5) + 32;
-                    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-                    results.setText(decimalFormat.format(conversion));
-                }
-                else {
-                    Toast.makeText(getBaseContext(), "Undefined Error", Toast.LENGTH_SHORT).show();
+                catch(NumberFormatException e)
+                {
+                    //inputted value is not properly formatted as a number
+                    Toast.makeText(getBaseContext(), "ERROR: Value is not a number", Toast.LENGTH_SHORT).show();
+                    results.setText("");
                 }
             }
         });
